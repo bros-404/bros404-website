@@ -3,25 +3,25 @@
 import { motion } from "framer-motion";
 import { Code2, Gamepad2, Rocket } from "lucide-react";
 
-const features = [
-    {
-        icon: <Code2 className="w-10 h-10 text-blue-500" />,
-        title: "Temiz Kod",
-        description: "Sadece çalışması yetmez, şiir gibi okunmalı.",
-    },
-    {
-        icon: <Gamepad2 className="w-10 h-10 text-purple-500" />,
-        title: "Eğlenceli Deneyim",
-        description: "Kullanıcıyı sıkmayan, interaktif arayüzler.",
-    },
-    {
-        icon: <Rocket className="w-10 h-10 text-pink-500" />,
-        title: "Hızlı Çözümler",
-        description: "Fikirden ürüne giden en kısa ve etkili yol.",
-    },
-];
+export default function WhatWeDo({ dict }: { dict: any }) {
+    const features = [
+        {
+            icon: <Code2 className="w-10 h-10 text-blue-500" />,
+            title: dict.whatWeDo.feature_1_title,
+            description: dict.whatWeDo.feature_1_desc,
+        },
+        {
+            icon: <Gamepad2 className="w-10 h-10 text-purple-500" />,
+            title: dict.whatWeDo.feature_2_title,
+            description: dict.whatWeDo.feature_2_desc,
+        },
+        {
+            icon: <Rocket className="w-10 h-10 text-pink-500" />,
+            title: dict.whatWeDo.feature_3_title,
+            description: dict.whatWeDo.feature_3_desc,
+        },
+    ];
 
-export default function WhatWeDo() {
     return (
         <section id="what-we-do" className="py-24 bg-white relative overflow-hidden">
             <div className="container mx-auto px-6">
@@ -35,20 +35,16 @@ export default function WhatWeDo() {
                             viewport={{ once: true }}
                         >
                             <h2 className="text-sm font-bold text-blue-600 tracking-widest uppercase mb-4">
-                                Hikayemiz
+                                {dict.whatWeDo.subtitle}
                             </h2>
                             <h3 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
-                                İki Arkadaş, <br /> Sonsuz Kahve ve <br /> Bir Sürü Kod Satırı.
+                                {dict.whatWeDo.title_1} <br /> {dict.whatWeDo.title_2} <br /> {dict.whatWeDo.title_3}
                             </h3>
                             <p className="text-lg text-slate-600 mb-6 leading-relaxed">
-                                Aslında her şey "Bir uygulama yapsak ne güzel olur" cümlesiyle başladı.
-                                İki arkadaş olarak, dünyayı değiştirecek büyük fikirlerin peşinden koşarken,
-                                kendimizi eğlenceli ve kullanışlı mobil uygulamalar geliştirirken bulduk.
+                                {dict.whatWeDo.desc_1}
                             </p>
                             <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-                                Bros404 olarak amacımız basit: İnsanların yüzünde tebessüm oluşturan,
-                                teknolojiyi karmaşık değil keyifli hale getiren işler üretmek.
-                                Sıkıcı kurumsal sitelerden ve anlaşılmaz menülerden biz de sıkıldık.
+                                {dict.whatWeDo.desc_2}
                             </p>
                         </motion.div>
                     </div>
@@ -80,7 +76,7 @@ export default function WhatWeDo() {
                                 className="p-8 rounded-3xl bg-gradient-to-tr from-blue-600 to-purple-600 text-white flex flex-col justify-center items-center text-center shadow-lg"
                             >
                                 <span className="text-5xl font-bold mb-2">404</span>
-                                <p className="font-medium opacity-90">Hata değil, tarzımız.</p>
+                                <p className="font-medium opacity-90">{dict.whatWeDo["404_text"]}</p>
                             </motion.div>
                         </div>
                     </div>

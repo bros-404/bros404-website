@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Github, Twitter, Instagram } from "lucide-react";
 
-export default function Footer() {
+export default function Footer({ dict }: { dict: any }) {
     return (
         <footer className="bg-white border-t border-slate-100 py-12">
             <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
@@ -11,16 +11,16 @@ export default function Footer() {
                         bros404<span className="text-blue-600">.</span>
                     </Link>
                     <p className="text-slate-500 text-sm">
-                        &copy; {new Date().getFullYear()} Bros404. Tüm hakları saklıdır.
+                        &copy; {new Date().getFullYear()} {dict.footer.copyright}
                     </p>
                 </div>
 
                 <div className="flex items-center gap-2 group cursor-default">
                     <span className="text-sm font-mono text-slate-400 group-hover:text-red-500 transition-colors">
-                        /social-media
+                        {dict.footer.social}
                     </span>
                     <span className="px-2 py-1 bg-slate-100 text-slate-500 text-xs font-bold rounded group-hover:bg-red-100 group-hover:text-red-600 transition-colors">
-                        404 FOUND
+                        {dict.footer.not_found}
                     </span>
                 </div>
 

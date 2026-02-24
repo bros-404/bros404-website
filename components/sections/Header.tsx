@@ -5,19 +5,22 @@ import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import LanguageSwitcher from "../ui/LanguageSwitcher";
+import type { Locale } from "@/app/i18n.config";
 
-const navItems = [
-    { name: "Ne Yapıyoruz?", href: "#what-we-do" },
-    { name: "İşler", href: "#work" },
-    { name: "Hakkımızda", href: "#about" },
-    { name: "İletişim", href: "#contact" },
-];
-
-export default function Header() {
+export default function Header({ dict, lang }: { dict: any, lang: Locale }) {
     const { scrollY } = useScroll();
     const [hidden, setHidden] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+    const navItems = [
+        { name: dict.navigation.whatWeDo, href: `/${lang}/#what-we-do` },
+        { name: dict.navigation.work, href: `/${lang}/#work` },
+        { name: dict.navigation.about, href: `/${lang}/#about` },
+        { name: dict.navigation.contact, href: `/${lang}/#contact` },
+        { name: dict.navigation.nailiy, href: `/${lang}/nailiy` },
+    ];
 
     useMotionValueEvent(scrollY, "change", (latest) => {
         const previous = scrollY.getPrevious() ?? 0;
@@ -60,7 +63,7 @@ export default function Header() {
                 <div className="px-6 flex items-center justify-between">
                     <div className="flex items-center gap-2 z-50">
                         <Link
-                            href="/"
+                            href={`/${lang}`}
                             className="font-bold text-2xl tracking-tighter text-slate-900"
                             onClick={() => setMobileMenuOpen(false)}
                         >
@@ -81,39 +84,43 @@ export default function Header() {
                         ))}
                     </nav>
 
-                    {/* Mobile Menu Button - Z-index elevated to stay above overlay */}
-                    <div className="md:hidden z-50">
-                        <button
-                            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                            className="p-2 text-slate-900 hover:bg-slate-100 rounded-full transition-colors focus:outline-none"
-                            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-                        >
-                            <div className="relative w-6 h-6 flex items-center justify-center">
-                                <AnimatePresence mode="wait">
-                                    {mobileMenuOpen ? (
-                                        <motion.div
-                                            key="close"
-                                            initial={{ rotate: -90, opacity: 0 }}
-                                            animate={{ rotate: 0, opacity: 1 }}
-                                            exit={{ rotate: 90, opacity: 0 }}
-                                            transition={{ duration: 0.2 }}
-                                        >
-                                            <X size={24} />
-                                        </motion.div>
-                                    ) : (
-                                        <motion.div
-                                            key="menu"
-                                            initial={{ rotate: 90, opacity: 0 }}
-                                            animate={{ rotate: 0, opacity: 1 }}
-                                            exit={{ rotate: -90, opacity: 0 }}
-                                            transition={{ duration: 0.2 }}
-                                        >
-                                            <Menu size={24} />
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
-                            </div>
-                        </button>
+                    <div className="flex items-center gap-4 z-50">
+                        <LanguageSwitcher currentLang={lang} />
+
+                        {/* Mobile Menu Button - Z-index elevated to stay above overlay */}
+                        <div className="md:hidden">
+                            <button
+                                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                                className="p-2 text-slate-900 hover:bg-slate-100 rounded-full transition-colors focus:outline-none"
+                                aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+                            >
+                                <div className="relative w-6 h-6 flex items-center justify-center">
+                                    <AnimatePresence mode="wait">
+                                        {mobileMenuOpen ? (
+                                            <motion.div
+                                                key="close"
+                                                initial={{ rotate: -90, opacity: 0 }}
+                                                animate={{ rotate: 0, opacity: 1 }}
+                                                exit={{ rotate: 90, opacity: 0 }}
+                                                transition={{ duration: 0.2 }}
+                                            >
+                                                <X size={24} />
+                                            </motion.div>
+                                        ) : (
+                                            <motion.div
+                                                key="menu"
+                                                initial={{ rotate: 90, opacity: 0 }}
+                                                animate={{ rotate: 0, opacity: 1 }}
+                                                exit={{ rotate: -90, opacity: 0 }}
+                                                transition={{ duration: 0.2 }}
+                                            >
+                                                <Menu size={24} />
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </div>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </motion.header>

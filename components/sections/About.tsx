@@ -4,33 +4,33 @@ import { motion } from "framer-motion";
 import { Linkedin, Twitter, Instagram } from "lucide-react";
 import Image from "next/image";
 
-const team = [
-    {
-        name: "Ulvi Asadzade",
-        role: "Co-Founder & Developer",
-        bio: "Kafe masasının priz köşesini kapan, siyah ekranlı terminalinden ayrılmayan kod makinesi. Veritabanı sorgularıyla konuşur, API mimarisini kahve molasında çizer. 'Bunu daha optimize yazabiliriz' diyerek sistemin beynini kurgulayan backend mimarı.",
-        socials: { twitter: "#", linkedin: "#", instagram: "#" },
-        image: "/team/ulvi_final_v2.jpg",
-        color: "bg-blue-100 text-blue-600"
-    },
-    {
-        name: "Mert Candemir",
-        role: "Co-Founder & Developer & Designer",
-        bio: "Kafe masasının diğer ucunda, hem kodu yazan hem de arayüzün mantığını inşa eden mühendis. Karmaşık tasarımları temiz koda dökerken, kullanıcı deneyimini algoritmik bir titizlikle kurgular. Hem göze hem mantığa hitap eden kodların mimarı.",
-        socials: { twitter: "#", linkedin: "#", instagram: "#" },
-        image: "/team/mert_final_v3.jpg",
-        color: "bg-purple-100 text-purple-600"
-    }
-];
+export default function About({ dict }: { dict: any }) {
+    const team = [
+        {
+            name: "Ulvi Asadzade",
+            role: dict.about.ulvi_role,
+            bio: dict.about.ulvi_bio,
+            socials: { twitter: "#", linkedin: "#", instagram: "#" },
+            image: "/team/ulvi_final_v2.jpg",
+            color: "bg-blue-100 text-blue-600"
+        },
+        {
+            name: "Mert Candemir",
+            role: dict.about.mert_role,
+            bio: dict.about.mert_bio,
+            socials: { twitter: "#", linkedin: "#", instagram: "#" },
+            image: "/team/mert_final_v3.jpg",
+            color: "bg-purple-100 text-purple-600"
+        }
+    ];
 
-export default function About() {
     return (
         <section id="about" className="py-24 bg-white">
             <div className="container mx-auto px-6">
                 <div className="text-center mb-16">
-                    <h2 className="text-4xl font-bold text-slate-900 mb-4">Biz Kimiz?</h2>
+                    <h2 className="text-4xl font-bold text-slate-900 mb-4">{dict.about.title}</h2>
                     <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-                        Bros404'ün arkasındaki beyin takımı. (Ya da en azından öyle sanıyoruz.)
+                        {dict.about.subtitle}
                     </p>
                 </div>
 

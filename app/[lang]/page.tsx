@@ -6,7 +6,11 @@ import About from "@/components/sections/About";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/sections/Footer";
 import { getDictionary } from "../get-dictionary";
-import { Locale } from "../i18n.config";
+import { i18n, type Locale } from "../i18n.config";
+
+export async function generateStaticParams() {
+  return i18n.locales.map((locale) => ({ lang: locale }));
+}
 
 export default async function Home({
   params: { lang },

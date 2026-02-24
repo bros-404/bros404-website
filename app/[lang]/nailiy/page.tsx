@@ -1,8 +1,12 @@
 import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
 import { getDictionary } from "../../get-dictionary";
-import { Locale } from "../../i18n.config";
+import { i18n, type Locale } from "../../i18n.config";
 import { Sparkles, Wand2, Palette, Users, Smartphone, Calendar, Search, MessageCircle, UserCircle, LayoutGrid, Star } from "lucide-react";
+
+export async function generateStaticParams() {
+    return i18n.locales.map((locale) => ({ lang: locale }));
+}
 
 export default async function NailiyPage({
     params: { lang },

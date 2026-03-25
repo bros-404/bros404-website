@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Download, QrCode, Star, Smartphone, Sparkles } from "lucide-react";
+import { FileText, ShieldCheck } from "lucide-react";
 
 export default function Work({ dict, lang }: { dict: any, lang: string }) {
     return (
@@ -40,12 +40,10 @@ export default function Work({ dict, lang }: { dict: any, lang: string }) {
                         <div className="flex-1 text-center lg:text-left space-y-8 z-10">
                             <div className="space-y-4">
                                 <div className="flex items-center justify-center lg:justify-start gap-2 mb-2">
-                                    <Star className="w-5 h-5 text-yellow-500 fill-yellow-500" />
-                                    <Star className="w-5 h-5 text-yellow-500 fill-yellow-500" />
-                                    <Star className="w-5 h-5 text-yellow-500 fill-yellow-500" />
-                                    <Star className="w-5 h-5 text-yellow-500 fill-yellow-500" />
-                                    <Star className="w-5 h-5 text-yellow-500 fill-yellow-500" />
-                                    <span className="text-slate-500 font-medium ml-2 text-sm">{dict.work.rating_text}</span>
+                                    <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 text-slate-700 text-sm font-semibold">
+                                        <ShieldCheck className="w-4 h-4 text-blue-600" />
+                                        {dict.work.rating_text}
+                                    </span>
                                 </div>
 
                                 <h3 className="text-5xl md:text-7xl font-black text-slate-900 tracking-tighter leading-none">
@@ -57,8 +55,8 @@ export default function Work({ dict, lang }: { dict: any, lang: string }) {
                             </div>
 
                             <p className="text-lg md:text-xl text-slate-600 leading-relaxed font-light">
-                                <strong className="font-semibold text-slate-900">{dict.work.strong_desc}</strong> <br />
-                                {dict.work.app_desc.replace(dict.work.strong_desc, '')}
+                                <strong className="font-semibold text-slate-900">{dict.work.strong_desc}</strong>{" "}
+                                {dict.work.app_desc}
                             </p>
 
                             <div className="flex flex-col items-center lg:items-start gap-8 mt-4">
@@ -73,44 +71,35 @@ export default function Work({ dict, lang }: { dict: any, lang: string }) {
                                 <div className="w-full h-px bg-slate-200/60" />
 
                                 <div className="flex flex-col sm:flex-row items-center gap-4 w-full flex-wrap justify-center lg:justify-start">
-                                    {/* App Store Button - Larger and more prominent */}
                                     <a
-                                        href="https://apps.apple.com/tr/app/nailiy-t%C4%B1rnak-tasar%C4%B1m%C4%B1/id6752858028?l=tr"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
+                                        href={`/${lang}/beuti`}
                                         className="group relative overflow-hidden flex items-center justify-center gap-4 bg-slate-900 text-white px-8 py-5 rounded-2xl transition-all hover:scale-[1.02] active:scale-[0.98] shadow-xl hover:shadow-slate-900/40 w-full sm:w-auto"
                                     >
                                         <div className="absolute inset-0 bg-gradient-to-r from-slate-800 to-slate-900 z-0" />
                                         <div className="absolute inset-0 opacity-0 group-hover:opacity-20 bg-gradient-to-r from-blue-500 to-purple-500 transition-opacity duration-500 z-0" />
 
-                                        <Download size={28} className="z-10 group-hover:-translate-y-1 transition-transform" />
+                                        <FileText size={28} className="z-10 group-hover:-translate-y-1 transition-transform" />
                                         <div className="text-left z-10">
-                                            <div className="text-xs opacity-80 font-medium">{dict.work.download_btn_sub}</div>
-                                            <div className="text-xl font-bold leading-none tracking-wide">App Store</div>
+                                            <div className="text-xs opacity-80 font-medium">{dict.work.primary_cta_sub}</div>
+                                            <div className="text-xl font-bold leading-none tracking-wide">{dict.work.primary_cta_label}</div>
                                         </div>
                                     </a>
 
-                                    {/* Details Button */}
                                     <a
-                                        href={`/${lang}/nailiy`}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
+                                        href={`/${lang}/privacy`}
                                         className="group relative overflow-hidden flex items-center justify-center bg-white border border-slate-200 text-slate-900 px-8 py-5 rounded-2xl transition-all hover:scale-[1.02] active:scale-[0.98] shadow-sm hover:shadow-md hover:border-slate-300 w-full sm:w-auto"
                                     >
-                                        <span className="text-lg font-bold">{dict.work.details_btn}</span>
+                                        <span className="text-lg font-bold">{dict.work.secondary_cta_label}</span>
                                         <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
                                     </a>
 
-                                    {/* QR Code - Enlarged */}
                                     <div className="flex items-center justify-center gap-5 bg-white p-3 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
-                                        <div className="bg-slate-900 p-1 rounded-xl">
-                                            <div className="bg-white p-2 rounded-lg">
-                                                <QrCode size={56} className="text-slate-900" />
-                                            </div>
+                                        <div className="bg-slate-900 p-4 rounded-xl">
+                                            <ShieldCheck size={32} className="text-white" />
                                         </div>
                                         <div className="text-left pr-2">
-                                            <span className="block text-sm font-bold text-slate-900">{dict.work.qr_title}</span>
-                                            <span className="text-xs text-slate-500">{dict.work.qr_sub}</span>
+                                            <span className="block text-sm font-bold text-slate-900">{dict.work.notice_title}</span>
+                                            <span className="text-xs text-slate-500">{dict.work.notice_sub}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -127,7 +116,7 @@ export default function Work({ dict, lang }: { dict: any, lang: string }) {
                                 <div className="w-full h-full relative overflow-hidden flex flex-col items-center justify-center rounded-[3.5rem]">
                                     <img
                                         src="/ingilizce tasarım/entry page.png"
-                                        alt="Nailiy App Home Screen"
+                                        alt="Beuti product preview"
                                         className="w-full h-full object-cover"
                                         loading="lazy"
                                     />

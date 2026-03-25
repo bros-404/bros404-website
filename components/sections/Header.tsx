@@ -19,7 +19,7 @@ export default function Header({ dict, lang }: { dict: any, lang: Locale }) {
         { name: dict.navigation.work, href: `/${lang}/#work` },
         { name: dict.navigation.about, href: `/${lang}/#about` },
         { name: dict.navigation.contact, href: `/${lang}/#contact` },
-        { name: dict.navigation.nailiy, href: `/${lang}/nailiy` },
+        { name: dict.navigation.nailiy, href: `/${lang}/beuti` },
     ];
 
     useMotionValueEvent(scrollY, "change", (latest) => {
@@ -75,7 +75,7 @@ export default function Header({ dict, lang }: { dict: any, lang: Locale }) {
                     <nav className="hidden md:flex items-center gap-8">
                         {navItems.map((item) => (
                             <Link
-                                key={item.name}
+                                key={item.href}
                                 href={item.href}
                                 className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors"
                             >
@@ -138,7 +138,7 @@ export default function Header({ dict, lang }: { dict: any, lang: Locale }) {
                         <nav className="flex flex-col gap-6">
                             {navItems.map((item, index) => (
                                 <motion.div
-                                    key={item.name}
+                                    key={item.href}
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ delay: 0.2 + index * 0.1, duration: 0.4 }}

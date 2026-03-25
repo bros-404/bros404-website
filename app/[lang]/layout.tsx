@@ -15,8 +15,27 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const isTr = params.lang === "tr";
   return {
-    title: isTr ? "Bros404 | Eğlenceli ve Fonksiyonel Uygulamalar" : "Bros404 | Creating Fun & Functional Apps",
-    description: isTr ? "Eğlenceli ve detaylı uygulamalar geliştiren iki arkadaş. Son projelerimize göz atın." : "Two friends building detailed and fun applications. Check out our latest work.",
+    metadataBase: new URL("https://bros404.com"),
+    title: isTr ? "Bros404 | Ürünler ve Dijital Deneyimler" : "Bros404 | Products and Digital Experiences",
+    description: isTr
+      ? "Bros404 ürünlerini, Beuti ürün sayfasını ve görünür gizlilik, hizmet koşulları ve iletişim sayfalarını sunan web sitesi."
+      : "Website for Bros404 products, including the Beuti product page and visible privacy, terms, and contact pages.",
+    openGraph: {
+      title: isTr ? "Bros404 | Ürünler ve Dijital Deneyimler" : "Bros404 | Products and Digital Experiences",
+      description: isTr
+        ? "Bros404 ürünlerini ve Beuti için görünür gizlilik, hizmet koşulları ve iletişim sayfalarını sunan web sitesi."
+        : "Website presenting Bros404 products and visible privacy, terms, and contact pages for Beuti.",
+      url: `https://bros404.com/${params.lang}`,
+      siteName: "Bros404",
+      type: "website",
+    },
+    twitter: {
+      card: "summary",
+      title: isTr ? "Bros404 | Ürünler ve Dijital Deneyimler" : "Bros404 | Products and Digital Experiences",
+      description: isTr
+        ? "Bros404 ürünleri ve Beuti için görünür gizlilik, hizmet koşulları ve iletişim sayfaları."
+        : "Bros404 products with visible privacy, terms, and contact pages for Beuti.",
+    },
   };
 }
 

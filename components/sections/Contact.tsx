@@ -1,9 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Send, Mail } from "lucide-react";
+import Link from "next/link";
+import { Mail, ArrowRight, FileText, ShieldCheck } from "lucide-react";
 
-export default function Contact({ dict }: { dict: any }) {
+export default function Contact({ dict, lang }: { dict: any; lang: string }) {
     return (
         <section id="contact" className="py-24 bg-slate-50">
             <div className="container mx-auto px-6">
@@ -36,7 +37,7 @@ export default function Contact({ dict }: { dict: any }) {
                         </div>
                     </div>
 
-                    {/* Form Side */}
+                    {/* CTA Side */}
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -44,42 +45,42 @@ export default function Contact({ dict }: { dict: any }) {
                         viewport={{ once: true }}
                         className="bg-white p-8 md:p-10 rounded-[2rem] shadow-xl border border-slate-100"
                     >
-                        <form className="space-y-6">
-                            <div className="grid md:grid-cols-2 gap-6">
-                                <div className="space-y-2">
-                                    <label htmlFor="name" className="text-sm font-medium text-slate-700">{dict.contact.form_name_label}</label>
-                                    <input
-                                        type="text"
-                                        id="name"
-                                        className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
-                                        placeholder={dict.contact.form_name_ph}
-                                    />
-                                </div>
-                                <div className="space-y-2">
-                                    <label htmlFor="email" className="text-sm font-medium text-slate-700">{dict.contact.form_email_label}</label>
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
-                                        placeholder={dict.contact.form_email_ph}
-                                    />
-                                </div>
+                        <div className="space-y-6">
+                            <div>
+                                <h3 className="text-2xl font-bold text-slate-900 mb-3">{dict.contact.cta_title}</h3>
+                                <p className="text-slate-600 leading-relaxed">
+                                    {dict.contact.cta_description}
+                                </p>
                             </div>
 
-                            <div className="space-y-2">
-                                <label htmlFor="message" className="text-sm font-medium text-slate-700">{dict.contact.form_msg_label}</label>
-                                <textarea
-                                    id="message"
-                                    rows={4}
-                                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all resize-none"
-                                    placeholder={dict.contact.form_msg_ph}
-                                ></textarea>
+                            <a
+                                href="mailto:bros@bros404.com"
+                                className="w-full py-4 bg-slate-900 text-white rounded-xl font-medium hover:bg-slate-800 transition-colors flex items-center justify-center gap-2"
+                            >
+                                {dict.contact.form_submit} <ArrowRight size={18} />
+                            </a>
+
+                            <div className="grid sm:grid-cols-2 gap-4">
+                                <Link
+                                    href={`/${lang}/privacy`}
+                                    className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-4 text-slate-700 hover:bg-slate-100 transition-colors"
+                                >
+                                    <ShieldCheck size={20} className="text-blue-600" />
+                                    <span className="font-medium">{dict.contact.quick_links.privacy}</span>
+                                </Link>
+                                <Link
+                                    href={`/${lang}/terms`}
+                                    className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-4 text-slate-700 hover:bg-slate-100 transition-colors"
+                                >
+                                    <FileText size={20} className="text-slate-900" />
+                                    <span className="font-medium">{dict.contact.quick_links.terms}</span>
+                                </Link>
                             </div>
 
-                            <button type="submit" className="w-full py-4 bg-slate-900 text-white rounded-xl font-medium hover:bg-slate-800 transition-colors flex items-center justify-center gap-2">
-                                {dict.contact.form_submit} <Send size={18} />
-                            </button>
-                        </form>
+                            <p className="text-sm text-slate-500">
+                                {dict.contact.form_note}
+                            </p>
+                        </div>
                     </motion.div>
 
                 </div>

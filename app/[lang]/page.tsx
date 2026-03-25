@@ -26,8 +26,8 @@ export default async function Home({
       <WhatWeDo dict={dict} />
       <Work dict={dict} lang={lang} />
       <About dict={dict} />
-      <Contact dict={dict} />
-      <Footer dict={dict} />
+      <Contact dict={dict} lang={lang} />
+      <Footer dict={dict} lang={lang} />
     </main>
   );
 }
